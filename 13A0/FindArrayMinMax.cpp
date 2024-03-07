@@ -1,6 +1,6 @@
 /*
 	Name: FindArrayMinMax
-	Copyright: 2034
+	Copyright: 2024
 	Author: Yu Jiang
 	Date: 03/06/24 08:58PM
 	Description: This program gets the largest and smallest numbers in user inputs.
