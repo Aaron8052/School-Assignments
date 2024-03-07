@@ -1,32 +1,50 @@
 /*
-Yu Jiang
-Assignment 7.1
-FindArrayMinMax.cpp
-3/6/2024
-This program gets the largest and smallest numbers in user inputs;
+	Name: FindArrayMinMax
+	Copyright: 2034
+	Author: Yu Jiang
+	Date: 03/06/24 08:58PM
+	Description: This program gets the largest and smallest numbers in user inputs.
 */
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
+#define FORMAT_OUTPUT(output) setw(10) << (output) << endl
 
 // Headers
-float GetLargetNumInArray(float array[], int size); 
-float GetSmallestNumInArray(float array[], int size); 
+void promptUserInput(float* array, int size);
+float getLargetNumInArray(float* array, int size); 
+float getSmallestNumInArray(float* array, int size); 
+void outputLargestNumber(float num);
+void outputSmallestNumber(float num);
 
-void OutputLargestNumber(float num);
-void OutputSmallestNumber(float num);
-
-const int MAXNUMBERS = 10;
+// the main function
 int main()
 {
+	const int MAXNUMBERS = 10;
+	
 	// Initialize the user inputs array
 	float userInputs[MAXNUMBERS] = {0};
 	
 	// Prompt user for inputs
-	cout << "Please enter 10 numbers, press \"enter\" OR \"space\" after each number input\n";
+	cout << "Please enter 10 numbers, "
+		 <<	"press \"enter\" OR \"space\" after each number input\n";
+	promptUserInput(userInputs, MAXNUMBERS);
+	cout << endl;
 	
+	// get largest & smallest numbers
+	float largestNum = getLargetNumInArray(userInputs, MAXNUMBERS);
+	float smallestNum = getSmallestNumInArray(userInputs, MAXNUMBERS);
 	
-	for(int i = 0 ; i < MAXNUMBERS; )
+	// output the results
+	outputLargestNumber(largestNum);
+	outputSmallestNumber(smallestNum);
+}
+
+// this function prompts user for inputs
+void promptUserInput(float* userInputs, int size)
+{
+	for (int i = 0; i < size; )
 	{
 		// check if user entered a valid number
 		if(cin >> userInputs[i])
@@ -35,66 +53,56 @@ int main()
 			continue;
 		}
 		
+		// invalid user input
 		cout << "Please enter a valid number!\n";
 		cin.clear();
 		cin.ignore();
 	}
-	
 	cout << endl;
-	
-	// get largest & smallest numbers
-	float largestNum = GetLargetNumInArray(userInputs, MAXNUMBERS);
-	float smallestNum = GetSmallestNumInArray(userInputs, MAXNUMBERS);
-	
-	// output the results
-	OutputLargestNumber(largestNum);
-	OutputSmallestNumber(smallestNum);
 }
 
 // function that finds largest number in an array
-float GetLargetNumInArray(float array[], int size)
+float getLargetNumInArray(float* array, int size)
 {
 	float largest = array[0];
-	
 	for(int i = 0; i < size; i++)
 	{
 		float current = array[i];
 		
+		// compare the numbers to see which one is bigger
 		if(current <= largest)
 			continue;
-			
 		largest = current;
 	}
-	
 	return largest;
 }
 
 // function that finds smallest number in an array
-float GetSmallestNumInArray(float array[], int size)
+float getSmallestNumInArray(float* array, int size)
 {
 	float smallest = array[0];
-	
 	for(int i = 0; i < size; i++)
 	{
 		float current = array[i];
 		
+		// compare the numbers to see which one is smaller
 		if(current >= smallest)
 			continue;
-			
 		smallest = current;
 	}
-	
 	return smallest;
 }
 
-
-// functions that output the results
-void OutputLargestNumber(float num)
+// function that output the largest result
+void outputLargestNumber(float num)
 {
-	cout << "The largest number is: " << num << endl;
+	cout << "The largest number is:\t" 
+		 << FORMAT_OUTPUT(num);
 }
 
-void OutputSmallestNumber(float num)
+// function that output the smallest result
+void outputSmallestNumber(float num)
 {
-	cout << "The smallest number is: " << num << endl;
+	cout << "The smallest number is:\t" 
+		 << FORMAT_OUTPUT(num);
 }
