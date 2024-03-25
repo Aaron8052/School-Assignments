@@ -3,6 +3,7 @@ prompt1: 	.asciiz "Please enter the first integer: "
 prompt2: 	.asciiz "Please enter the second integer: "
 sum:		.asciiz "The sum is "
 product:	.asciiz "\nThe product is "
+result:		.asciiz "\n(3(num1-num2)-8 = "
 
 
 .text 
@@ -45,6 +46,18 @@ main:
 	li	$v0, 1
 	add	$a0, $t4, $zero	# pass the product into a0
 	syscall			# print the product
+	
+	#compute 3*(t1 - t2) -8
+	sub	$s0, $t1, $t2	#s0=t1-t2
+	li	$s1, 3		#s1=3
+	mult	$s1, $s0	# 3*(t1-t2)
+	mflo	$s2		#s2=3(t1-t2)
+	addi	$s3, $s2, -8	#s3 = 3(t1-t)-8
+	#print it out
+	li	$v0, 4
+	la	$a0, result
+	syscall
+	#li	$v0, 
 	
 	li	$v0, 10
 	syscall			# exit the program
