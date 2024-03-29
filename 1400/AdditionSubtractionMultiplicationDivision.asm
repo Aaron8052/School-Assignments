@@ -28,7 +28,7 @@
 	sll 	$s4, $s4, 3	#shift s4 to left by 3bit	(times 8)
 	
 	#t3 = t3 / 4	(t3=28)
-	li	$3, 28
+	li	$t3, 28
 	#li	$t1, 4
 	#div	$t3, $t1	#t3/4
 	#mflo	$t3		#t3=t3/4
