@@ -1,0 +1,19 @@
+.data
+
+
+.text
+
+	# $t0 = $s0 / 8 - 2 * $s1 + $s2
+	#li	$t1, 8
+	#div	$s0, $s1	# divide
+	#mflo	$t2		# remainder
+	sra	$t2, $s0, 3	#use shift right 3 bits (divide by 8)
+	
+	#li	$t3, 2
+	#mult	$t3, $s1
+	#mflo	$t4
+	sll	$t4, $s1, 1	# shift left by 1 bit (times 2)
+	
+	sub	$t5, $t2, $t4
+	add	$t0, $t5, $s2
+	
