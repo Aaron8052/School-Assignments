@@ -20,7 +20,7 @@ main:
 	la	$a0, result
 	syscall
 	
-	# not necessary to set 4 again since line 18 is already set to 4
+	# not necessary to set 4 again since line 19 is already set to 4
 	#li	$v0, 4		# output name
 	la	$a0, name
 	syscall
