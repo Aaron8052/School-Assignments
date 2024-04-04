@@ -1,10 +1,10 @@
 .data
-prompt:		.asciiz "Please enter aa grade: "
-resultA:	.asciiz "\nA"
-resultB:	.asciiz "\nB"
-resultC:	.asciiz "\nC"
-resultD:	.asciiz "\nD"
-resultE:	.asciiz "\nE"
+prompt:		.asciiz "Please enter your grade: "
+resultA:	.asciiz "\nYou got an A"
+resultB:	.asciiz "\nYou got a B"
+resultC:	.asciiz "\nYou got a C"
+resultD:	.asciiz "\nYou got a D"
+resultF:	.asciiz "\nYou got an F"
 
 .text
 	#print prompt
@@ -19,15 +19,23 @@ resultE:	.asciiz "\nE"
 	move	$t1, $v0
 	
 	#if score >= #
+	#li $t2, 90
+	#bge	$t1, $t2, A
 	bge	$t1, 90, A
+	#li $t2, 80
+	#bge	$t1, $t2, B
 	bge	$t1, 80, B
+	#li $t2, 70
+	#bge	$t1, $t2, C
 	bge	$t1, 70, C
+	#li $t2, 60
+	#bge	$t1, $t2, D
 	bge	$t1, 60, D
 	
-E:
-	#print E
+F:
+	#print F
 	li	$v0, 4
-	la	$a0, resultE
+	la	$a0, resultF
 	syscall
 	b	Exit
 A:
