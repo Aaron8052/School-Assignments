@@ -1,7 +1,7 @@
 .data
 prompt:		.asciiz "Please enter your name: "
 #char array
-name:		.space 31		#max of 30 char
+name:		.space 31		#alloc a space max of 30 char
 result:		.asciiz "Your name: "
 
 .text
