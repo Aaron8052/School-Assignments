@@ -13,10 +13,6 @@ main:
 	la	$a0, Prompt
 	syscall
 	
-	li	$v0, 5		#input
-	syscall
-	move	$t0, $v0	#t0 = input
-	
 	#input validation
 	#get input
 	#while(invalid input)
@@ -24,12 +20,14 @@ main:
 	#	get input 
 	#end loop
 	
+	li	$v0, 5		#input
+	syscall
+	move	$t0, $v0	#t0 = input
+	
 	bgtz	$t0, validInput
 	
 invalidInput:
-	#need complete the code
-	#
-	li	$v0, 4
+	li	$v0, 4			# print error msg
 	la	$a0, Error
 	syscall
 	
@@ -38,6 +36,7 @@ invalidInput:
 validInput:
 	li	$t1, 0			#t1 = 0
 	li	$s0, 0			#s0 = 0
+	
 loop:
 	bge	$t1, $t0, result	#if(t1 >= t0) result
 	
@@ -52,7 +51,7 @@ loop:
 	move	$a0, $t1
 	syscall				#print t1
 	
-	blt	$t1, $t0, loop		#if(t2<=t0) => loop
+	b	loop			#goto loop
 	
 result:
 	li	$v0, 4			#print sum
