@@ -16,7 +16,7 @@ loop:
 		la	$a0, newline
 		syscall
 		
-		addi	$t0, $t0, 4		#t0=the address of next element (int = 4bytes
+		addi	$t0, $t0, 4		#t0=the address of next element (int = 4bytes)
 		addi	$t2, $t2, 1		#i++, loop counter++
 		b loop
 		
