@@ -14,6 +14,8 @@ main:
 		syscall
 		move	$s0, $v0			# s0 = user input
 		
+		bltz	$s0, main
+		
 		la	$s1, hexNumbers		# s1 = list of all hex numbers
 		la	$s2, buffer		# s2 = hex buffer
 		
