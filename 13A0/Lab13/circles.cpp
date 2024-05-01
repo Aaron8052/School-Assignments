@@ -53,6 +53,7 @@ Circles::Circles()
 {
    radius = 1;
 }
+
 // Fill in the code to implement the non-default constructor
 Circles::Circles(float r)
 {
@@ -62,7 +63,7 @@ Circles::Circles(float r)
 // Fill in the code to implement the findArea member function
 double Circles::findArea()
 {
-	return pow(PI * radius, 2);
+	return PI * pow(radius, 2);
 }
 
 // Fill in the code to implement the findCircumference member function
@@ -70,7 +71,6 @@ double Circles::findCircumference()
 {
 	return 2 * PI * radius;
 }
-
 
 void Circles::printCircleStats()
 // This procedure prints out the radius and center coordinates of the circle
