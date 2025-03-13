@@ -1,19 +1,18 @@
 @echo off
 :: 切换到 .bat 所在的目录
+echo cd /d "%~dp0"
 cd /d "%~dp0"
 
-:: 获取拖入的文件路径
 set "file=%~1"
 
-:: 如果没有文件，提示用户
 if "%file%"=="" (
-    echo 文件不存在
-    pause
-    exit
+    	echo Path cannot be empty
+	echo Drag file into this bat!
+    	pause
+    	exit
 )
 
-:: 运行 StyleScanner 并传入文件路径
+echo .\StyleScanner "%file%" -c
 .\StyleScanner "%file%" -c
 
-:: 暂停显示结果
 pause
