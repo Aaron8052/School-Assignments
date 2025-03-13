@@ -3,7 +3,7 @@
 	Copyright: 2025
 	Author: Yu Jiang
 	Date: 12/03/25 19:00
-	Description: The C++ interface for a set
+	Description: The C++ interface for a set.
 */
 
 #include <vector>
@@ -21,7 +21,7 @@ class SetInterface
 		virtual bool isEmpty() const = 0;
 
 		/** Adds a new entry to this set.
-		 @pre	We can add the entry successfully only when the set
+		 @pre   The newEntry can be added only when the set
 		 	doesn't contain the entry.
 		 @post  If successful, newEntry is stored in the set and
 		    the count of items in the set has increased by 1.
