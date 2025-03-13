@@ -12,7 +12,6 @@ template<class ItemType>
 class SetInterface
 {
 	public:
-		
 		/** Gets the current number of entries in this set.
 		 @return  The integer number of entries currently in the set. */
 		virtual int getCurrentSize() const = 0;
