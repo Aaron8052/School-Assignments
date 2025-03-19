@@ -15,11 +15,15 @@ template<class ItemType>
 class ArraySet : public SetInterface<ItemType>
 {
 	private:
+		static const int DEFAULT_SIZE = 16;
 		int count = -1;
+		int* containerArr = nullptr;
 		int indexOf(const ItemType& anEntry) const;
+		
 	public:
 		ArraySet();
 		ArraySet(int);
+		~ArraySet();
 		int getCurrentSize() const override;
 		bool isEmpty() const override;
 		bool add(const ItemType& newEntry) override;
