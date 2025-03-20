@@ -71,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=ArraySet.cpp
+FileName=ArraySet.hpp
 CompileCpp=1
 Folder=
 Compile=1

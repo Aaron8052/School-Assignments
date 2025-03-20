@@ -20,15 +20,12 @@ class ArraySet final: public SetInterface<ItemType>
 		int count = -1;
 		ItemType* containerArr = nullptr;
 		int indexOf(const ItemType& anEntry) const;
+		void expandArray();
 		
 	public:
 		ArraySet();
 		ArraySet(int);
-		~ArraySet(){
-			if(containerArr)
-			delete [] containerArr;
-			containerArr = nullptr;
-		}
+		~ArraySet();
 		int getCurrentSize() const override;
 		bool isEmpty() const override;
 		bool add(const ItemType& newEntry) override;
@@ -38,5 +35,5 @@ class ArraySet final: public SetInterface<ItemType>
 		std::vector<ItemType> toVector() const override;
 };
 
-#include "ArraySet.cpp"
+//#include "ArraySet.hpp"
 #endif
