@@ -17,10 +17,10 @@ string getBoolStr(bool b)
 }
 void printSet(ArraySet<int>& set)
 {
-	cout << "Current Max Size: " << set.getMaxSize()
+	cout << "Max Size: " << set.getMaxSize()
 		<< endl
-		<< "The set contains " << set.getCurrentSize()
-		<< " Items: " << endl;
+		<< "Current Size: " << set.getCurrentSize()
+		<< endl << "Items: " << endl;
 	if(set.isEmpty())
 	{
 		cout << "The set is empty!" << endl << endl;
@@ -52,7 +52,7 @@ void testContains(ArraySet<int>& set)
 
 void testAdd(ArraySet<int>& set)
 {
-	cout << "-- Test Add --" << endl;
+	cout << "-- Test Add 2, -100, -10, 4 --" << endl;
 	set.clear();
 	set.add(2);
 	set.add(-100);
@@ -64,7 +64,7 @@ void testAdd(ArraySet<int>& set)
 
 void testAddDup(ArraySet<int>& set)
 {
-	cout << "-- Test Add Duplicates --" << endl;
+	cout << "-- Test Add Duplicates 1, 5, 7, 9 --" << endl;
 	set.clear();
 	set.add(1);
 	set.add(5);
@@ -145,6 +145,17 @@ void testRemoveOnlyOne(ArraySet<int>& set)
 	printSet(set);
 }
 
+void testZeroSizeSet()
+{
+	cout << "-- Test 0 initSize --" << endl;
+	ArraySet<int> testSet(0);
+	printSet(testSet);
+	testSet.add(1);
+	testSet.add(2);
+	testSet.add(3);
+	printSet(testSet);
+}
+
 int main(){
 
 	ArraySet<int> testSet(2);
@@ -157,6 +168,7 @@ int main(){
 	testRemoveFirst(testSet);
 	testRemoveLast(testSet);
 	testRemoveOnlyOne(testSet);
+	testZeroSizeSet();
 	return 0;
 }
 

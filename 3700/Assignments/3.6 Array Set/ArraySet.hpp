@@ -15,7 +15,7 @@ ArraySet<ItemType>::ArraySet()
 
 template<class ItemType>
 ArraySet<ItemType>::ArraySet(int initSize) 
-	: maxCount(initSize),
+	: maxCount(initSize <= 0 ? DEFAULT_SIZE : initSize),
 	  containerArr(new ItemType[initSize])
 {}
 
