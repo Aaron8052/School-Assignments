@@ -10,8 +10,11 @@
 
 template<class ItemType>
 ArraySet<ItemType>::ArraySet() 
-	: count(ArraySet::DEFAULT_SIZE) {}
+	: ArraySet<ItemType>(ArraySet::DEFAULT_SIZE)
+{}
 
 template<class ItemType>
-ArraySet<ItemType>::ArraySet(int initCount) 
-	: count(initCount) {}
+ArraySet<ItemType>::ArraySet(int initSize) 
+	: ArraySet::maxCount(initSize),
+	ArraySet::containerArr(new ItemType[initSize])
+{}
