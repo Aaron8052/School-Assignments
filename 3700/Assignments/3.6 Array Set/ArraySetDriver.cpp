@@ -15,6 +15,7 @@ string getBoolStr(bool b)
 {
 	return b == true ? "true" : "false";
 }
+
 void printSet(ArraySet<int>& set)
 {
 	cout << "Max Size: " << set.getMaxSize()
@@ -99,7 +100,7 @@ void testRemove(ArraySet<int>& set)
 	printSet(set);
 }
 
-void testClearAndEmpty(ArraySet<int>& set)
+void testClear(ArraySet<int>& set)
 {
 	cout << "-- Clear All Items --" << endl;
 	set.clear();
@@ -156,14 +157,26 @@ void testZeroSizeSet()
 	printSet(testSet);
 }
 
-int main(){
+void testDefCtor()
+{
+	cout << "-- Test Default Constructor --" << endl;
+	ArraySet<int> testSet;
+	printSet(testSet);
+	testSet.add(1);
+	testSet.add(2);
+	testSet.add(3);
+	testSet.add(7);
+	printSet(testSet);
+}
 
+int main(){
+	testDefCtor();
 	ArraySet<int> testSet(2);
 	testAdd(testSet);
 	testAddDup(testSet);
 	testExpand(testSet);
 	testContains(testSet);
-	testClearAndEmpty(testSet);
+	testClear(testSet);
 	testRemove(testSet);
 	testRemoveFirst(testSet);
 	testRemoveLast(testSet);
