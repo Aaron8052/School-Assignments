@@ -111,6 +111,40 @@ void testClearAndEmpty(ArraySet<int>& set)
 	printSet(set);
 }
 
+void testRemoveFirst(ArraySet<int>& set)
+{
+	cout << "-- Test Removes first item --" << endl;
+	set.clear();
+	set.add(2);
+	set.add(-100);
+	set.add(10);
+	printSet(set);
+	set.remove(2);
+	printSet(set);
+}
+
+void testRemoveLast(ArraySet<int>& set)
+{
+	cout << "-- Test Removes last item --" << endl;
+	set.clear();
+	set.add(2);
+	set.add(-100);
+	set.add(10);
+	printSet(set);
+	set.remove(10);
+	printSet(set);
+}
+
+void testRemoveOnlyOne(ArraySet<int>& set)
+{
+	cout << "-- Test Remove the only item --" << endl;
+	set.clear();
+	set.add(2);
+	printSet(set);
+	set.remove(2);
+	printSet(set);
+}
+
 int main(){
 
 	ArraySet<int> testSet(2);
@@ -120,6 +154,9 @@ int main(){
 	testContains(testSet);
 	testClearAndEmpty(testSet);
 	testRemove(testSet);
+	testRemoveFirst(testSet);
+	testRemoveLast(testSet);
+	testRemoveOnlyOne(testSet);
 	return 0;
 }
 
