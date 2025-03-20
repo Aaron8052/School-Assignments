@@ -17,7 +17,7 @@ class ArraySet final: public SetInterface<ItemType>
 	private:
 		static const int DEFAULT_SIZE = 16;
 		int maxCount = -1;
-		int count = -1;
+		int count = 0;
 		ItemType* containerArr = nullptr;
 		int indexOf(const ItemType& anEntry) const;
 		void expandArray();
@@ -26,6 +26,7 @@ class ArraySet final: public SetInterface<ItemType>
 		ArraySet();
 		ArraySet(int);
 		~ArraySet();
+		int getMaxSize() const;
 		int getCurrentSize() const override;
 		bool isEmpty() const override;
 		bool add(const ItemType& newEntry) override;

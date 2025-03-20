@@ -42,13 +42,19 @@ int ArraySet<ItemType>::indexOf(const ItemType& anEntry) const
 template<class ItemType>
 void ArraySet<ItemType>::expandArray()
 {
-	if(maxCount <= 0) return;
-	maxCount *= 2;
+	if(maxCount <= 0) maxCount = DEFAULT_SIZE;
+	else maxCount *= 2;
 	ItemType* newArr = new ItemType[maxCount];
 	for(int i = 0; i < count; i++)
 		newArr[i] = containerArr[i];
 	delete [] containerArr;
 	containerArr = newArr;
+}
+
+template<class ItemType>
+int ArraySet<ItemType>::getMaxSize() const
+{
+	return maxCount;
 }
 
 template<class ItemType>
