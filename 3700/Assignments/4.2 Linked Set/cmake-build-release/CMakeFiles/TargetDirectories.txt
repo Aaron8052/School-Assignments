@@ -1,3 +1,0 @@
-C:/Users/jiang/Documents/GitHub/School-Assignments/3700/Assignments/4.2 Linked Set/cmake-build-release/CMakeFiles/4_2_Linked_Set.dir
-C:/Users/jiang/Documents/GitHub/School-Assignments/3700/Assignments/4.2 Linked Set/cmake-build-release/CMakeFiles/edit_cache.dir
-C:/Users/jiang/Documents/GitHub/School-Assignments/3700/Assignments/4.2 Linked Set/cmake-build-release/CMakeFiles/rebuild_cache.dir
