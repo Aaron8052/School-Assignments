@@ -10,13 +10,16 @@
 #define LINKED_SET
 
 #include "SetInterface.h"
+#include "Node.h"
 
 template<class ItemType>
 class LinkedSet final: public SetInterface<ItemType>
 {
 private:
     int count = 0;
-
+    Node<ItemType>* headPtr = nullptr;
+    Node<ItemType>* getPrevPointerTo(const ItemType& target) const;
+    Node<ItemType>* getPointerTo(const ItemType& target) const;
 public:
     LinkedSet();
     ~LinkedSet() override;
@@ -28,5 +31,5 @@ public:
     bool contains(const ItemType& anEntry) const override;
     std::vector<ItemType> toVector() const override;
 };
-
+#include "LinkedSet.hpp"
 #endif

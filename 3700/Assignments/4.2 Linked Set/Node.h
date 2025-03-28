@@ -17,13 +17,13 @@ private:
     Node<ItemType> *next;
 public:
     Node();
-    Node(const ItemType &item);
-    Node(const ItemType &item, Node<ItemType> *nextNodePtr);
-    void setItem(const ItemType &item);
+    Node(const ItemType &anItem);
+    Node(const ItemType &anItem, Node<ItemType> *nextNodePtr);
+    void setItem(const ItemType &anItem);
     void setNext(Node<ItemType> *nextNodePtr);
     ItemType getItem() const;
     Node<ItemType> *getNext() const;
 };
 
-//#include "Node.cpp"
+#include "Node.hpp"
 #endif

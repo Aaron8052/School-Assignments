@@ -7,4 +7,4 @@ add_executable(4_2_Linked_Set LinkedSetDriver.cpp
         LinkedSet.h
         LinkedSet.hpp
         Node.h
-        Node.cpp)
+        Node.hpp)
