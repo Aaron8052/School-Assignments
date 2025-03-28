@@ -13,7 +13,7 @@ using namespace std;
 
 string getBoolStr(const bool b)
 {
-	return b == true ? "true" : "false";
+	return b ? "true" : "false";
 }
 
 void printSet(const LinkedSet<int>& set)

@@ -2,5 +2,10 @@
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
     <file url="file://$PROJECT_DIR$/CMakeLists.txt" charset="US-ASCII" />
+    <file url="file://$PROJECT_DIR$/LinkedSet.h" charset="US-ASCII" />
+    <file url="file://$PROJECT_DIR$/LinkedSet.hpp" charset="US-ASCII" />
+    <file url="file://$PROJECT_DIR$/LinkedSetDriver.cpp" charset="US-ASCII" />
+    <file url="file://$PROJECT_DIR$/Node.h" charset="US-ASCII" />
+    <file url="file://$PROJECT_DIR$/Node.hpp" charset="US-ASCII" />
   </component>
 </project>
