@@ -1,4 +1,4 @@
-﻿/*
+/*
     Name: LinkedSet Header
     Copyright: 2025
     Author: Yu Jiang
@@ -12,24 +12,26 @@
 #include "SetInterface.h"
 #include "Node.h"
 
-template<class ItemType>
-class LinkedSet final: public SetInterface<ItemType>
+template <class ItemType>
+class LinkedSet final : public SetInterface<ItemType>
 {
-private:
-    int count = 0;
-    Node<ItemType>* headPtr = nullptr;
-    Node<ItemType>* getPrevPointerTo(const ItemType& target) const;
-    Node<ItemType>* getPointerTo(const ItemType& target) const;
-public:
-    LinkedSet();
-    ~LinkedSet() override;
-    int getCurrentSize() const override;
-    bool isEmpty() const override;
-    bool add(const ItemType& newEntry) override;
-    bool remove(const ItemType& anEntry) override;
-    void clear() override;
-    bool contains(const ItemType& anEntry) const override;
-    std::vector<ItemType> toVector() const override;
+	private:
+		int count = 0;
+		Node<ItemType>* headPtr = nullptr;
+		Node<ItemType>* getPrevPointerTo(const ItemType& target) const;
+		Node<ItemType>* getPointerTo(const ItemType& target) const;
+
+	public:
+		LinkedSet();
+		~LinkedSet() override;
+		int getCurrentSize() const override;
+		bool isEmpty() const override;
+		bool add(const ItemType& newEntry) override;
+		bool remove(const ItemType& anEntry) override;
+		void clear() override;
+		bool contains(const ItemType& anEntry) const override;
+		std::vector<ItemType> toVector() const override;
 };
+
 #include "LinkedSet.hpp"
 #endif

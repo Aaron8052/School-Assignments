@@ -1,4 +1,4 @@
-﻿/*
+/*
     Name: LinkedSet Driver
     Copyright: 2025
     Author: Yu Jiang
@@ -20,14 +20,14 @@ void printSet(const LinkedSet<int>& set)
 {
 	cout << "Current Size: " << set.getCurrentSize()
 		<< endl << "Items: " << endl;
-	if(set.isEmpty())
+	if (set.isEmpty())
 	{
 		cout << "The set is empty!" << endl << endl;
 		return;
 	}
 	vector<int> vec = set.toVector();
 	int vecSize = (int)vec.size();
-	for(int i = 0; i < vecSize; i++)
+	for (int i = 0; i < vecSize; i++)
 		cout << vec[i] << " ";
 	cout << endl << endl;
 }
@@ -47,7 +47,6 @@ void testContains(LinkedSet<int>& set)
 		<< getBoolStr(set.contains(99))
 		<< endl << endl;
 }
-
 
 void testAdd(LinkedSet<int>& set)
 {
@@ -135,9 +134,8 @@ void testRemoveOnlyOne(LinkedSet<int>& set)
 	printSet(set);
 }
 
-
-
-int main(){
+int main()
+{
 	LinkedSet<int> testSet;
 	testAdd(testSet);
 	testAddDup(testSet);
