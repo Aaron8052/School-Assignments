@@ -71,6 +71,7 @@ bool LinkedSet<ItemType>::remove(const ItemType& anEntry)
 		nextNodePtr = entryPtr->getNext();
 		prevNodePtr->setNext(nextNodePtr);
 		delete entryPtr;
+		entryPtr = nullptr;
 		count--;
 	}
 	return true;
