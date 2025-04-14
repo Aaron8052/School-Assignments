@@ -10,19 +10,22 @@
 #define ARRAYSTACK_H
 
 #include "StackInterface.h"
+#include "MemoryAllocException.h"
 
 template <class ItemType>
 class ArrayStack final : public StackInterface<ItemType>
 {
 	private:
-		const int DEFAULT_CAPACITY = 5;
+		static const int DEFAULT_CAPACITY = 5;
+		int capacity;
 		ItemType* items = nullptr;
 		int top;
-		void expandCapacity();
+		bool expandCapacity();
 
 	public:
 		ArrayStack();
-		~ArrayStack();
+		ArrayStack(int);
+		~ArrayStack() override;
 		bool isEmpty() const override;
 		bool push(const ItemType& newEntry) override;
 		bool pop() override;

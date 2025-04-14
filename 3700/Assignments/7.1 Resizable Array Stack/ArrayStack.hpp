@@ -13,35 +13,61 @@
 #include "ArrayStack.h"
 
 template <class ItemType>
-ArrayStack<ItemType>::ArrayStack() : top(-1)
+ArrayStack<ItemType>::ArrayStack() : ArrayStack(DEFAULT_CAPACITY)
 {}
 
 template <class ItemType>
-ArrayStack<ItemType>::~ArrayStack() {}
+ArrayStack<ItemType>::ArrayStack(const int capacity) :
+	top(-1), capacity(capacity)
+{
+	items = new ItemType[capacity];
+}
+
+template <class ItemType>
+ArrayStack<ItemType>::~ArrayStack()
+{
+	delete [] items;
+	items = nullptr;
+}
 
 template <class ItemType>
 bool ArrayStack<ItemType>::isEmpty() const
 {
 	return top < 0;
-} // end isEmpty
+}
 
 template <class ItemType>
-void ArrayStack<ItemType>::expandCapacity()
-{}
+bool ArrayStack<ItemType>::expandCapacity()
+{
+	if (isEmpty()) return;
+	int newSize = capacity * 2;
+	ItemType* newArray = nullptr;
+	try
+	{
+		newArray = new ItemType[newSize];
+	}
+	catch (std::exception& ex)
+	{
+		throw MemoryAllocException("Failed to expand the stack\n");
+		return false;
+	}
+
+	capacity = newSize;
+	for (int i = 0; i < top; i++)
+		newArray[i] = items[i];
+	delete [] items;
+	items = newArray;
+	return true;
+}
 
 template <class ItemType>
 bool ArrayStack<ItemType>::push(const ItemType& newEntry)
 {
-	bool result = false;
-	if (top < MAX_STACK - 1)
-	{
-		// Does stack have room for newEntry?
-		top++;
-		items[top] = newEntry;
-		result = true;
-	} // end if
-	return result;
-} // end push
+	if (top >= capacity)
+		expandCapacity();
+	top++;
+	items[top] = newEntry;
+}
 
 template <class ItemType>
 bool ArrayStack<ItemType>::pop()
