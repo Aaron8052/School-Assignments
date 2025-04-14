@@ -8,10 +8,6 @@
 
 #include "MemoryAllocException.h"
 
-using namespace std;
-
-MemoryAllocException::MemoryAllocException(const string& msg)
+MemoryAllocException::MemoryAllocException(const std::string& msg)
 	: logic_error("Memory Allocation Exception: " + msg)
 {}
-
-
