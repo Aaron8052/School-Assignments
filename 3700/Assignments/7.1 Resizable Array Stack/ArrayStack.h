@@ -10,7 +10,6 @@
 #define ARRAYSTACK_H
 
 #include "StackInterface.h"
-#include "MemoryAllocException.h"
 
 template <class ItemType>
 class ArrayStack final : public StackInterface<ItemType>

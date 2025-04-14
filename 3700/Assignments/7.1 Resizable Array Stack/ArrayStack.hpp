@@ -8,26 +8,28 @@
 
 #ifndef ARRAYSTACK
 #define ARRAYSTACK
-
-#include <cassert>
 #include "ArrayStack.h"
+#include "OutOfMemoryException.h"
+#include "OutOfRangeException.h"
 
 template <class ItemType>
 ArrayStack<ItemType>::ArrayStack() : ArrayStack(DEFAULT_CAPACITY)
 {}
 
 template <class ItemType>
-ArrayStack<ItemType>::ArrayStack(const int capacity) :
-	top(-1), capacity(capacity)
+ArrayStack<ItemType>::ArrayStack(int initCapacity) :
+	top(-1)
 {
+	if (initCapacity < 1)
+		throw OutOfRangeException("Initial Capacity must be 1 or greater");
 	try
 	{
 		items = new ItemType[capacity];
 	}
-	catch (const bad_alloc& ex)
+	catch (const std::bad_alloc& ex)
 	{
 		items = nullptr;
-		throw MemoryAllocException("Failed to allocate the initial stack");
+		throw OutOfMemoryException("Failed to allocate the initial stack");
 	}
 }
 
@@ -54,13 +56,13 @@ void ArrayStack<ItemType>::expandCapacity()
 	{
 		newArray = new ItemType[newSize];
 	}
-	catch (const bad_alloc& ex)
+	catch (const std::bad_alloc& ex)
 	{
-		throw MemoryAllocException("Failed to expand the stack");
+		throw OutOfMemoryException(
+			"Failed to expand the stack due to bad allocation");
 	}
-
 	capacity = newSize;
-	for (int i = 0; i < top; i++)
+	for (int i = 0; i <= top; i++)
 		newArray[i] = items[i];
 	delete [] items;
 	items = newArray;
@@ -69,7 +71,7 @@ void ArrayStack<ItemType>::expandCapacity()
 template <class ItemType>
 bool ArrayStack<ItemType>::push(const ItemType& newEntry)
 {
-	if (top >= capacity)
+	if (top >= capacity - 1)
 		expandCapacity();
 	top++;
 	items[top] = newEntry;
@@ -79,7 +81,7 @@ bool ArrayStack<ItemType>::push(const ItemType& newEntry)
 template <class ItemType>
 bool ArrayStack<ItemType>::pop()
 {
-  	if(isEmpty()) return false;
+	if (isEmpty()) return false;
 	top--;
 	return true;
 }
@@ -87,7 +89,8 @@ bool ArrayStack<ItemType>::pop()
 template <class ItemType>
 ItemType ArrayStack<ItemType>::peek() const
 {
-	assert(!isEmpty());
+	if (isEmpty())
+		throw OutOfRangeException("Cannot peek empty stack");
 	return items[top];
 }
 
