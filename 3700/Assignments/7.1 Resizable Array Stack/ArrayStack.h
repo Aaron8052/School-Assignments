@@ -20,7 +20,7 @@ class ArrayStack final : public StackInterface<ItemType>
 		int capacity;
 		ItemType* items = nullptr;
 		int top;
-		bool expandCapacity();
+		void expandCapacity();
 
 	public:
 		ArrayStack();

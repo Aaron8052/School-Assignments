@@ -20,7 +20,15 @@ template <class ItemType>
 ArrayStack<ItemType>::ArrayStack(const int capacity) :
 	top(-1), capacity(capacity)
 {
-	items = new ItemType[capacity];
+	try
+	{
+		items = new ItemType[capacity];
+	}
+	catch (const bad_alloc& ex)
+	{
+		items = nullptr;
+		throw MemoryAllocException("Failed to allocate the initial stack");
+	}
 }
 
 template <class ItemType>
@@ -37,7 +45,7 @@ bool ArrayStack<ItemType>::isEmpty() const
 }
 
 template <class ItemType>
-bool ArrayStack<ItemType>::expandCapacity()
+void ArrayStack<ItemType>::expandCapacity()
 {
 	if (isEmpty()) return;
 	int newSize = capacity * 2;
@@ -46,10 +54,9 @@ bool ArrayStack<ItemType>::expandCapacity()
 	{
 		newArray = new ItemType[newSize];
 	}
-	catch (std::exception& ex)
+	catch (const bad_alloc& ex)
 	{
-		throw MemoryAllocException("Failed to expand the stack\n");
-		return false;
+		throw MemoryAllocException("Failed to expand the stack");
 	}
 
 	capacity = newSize;
@@ -57,7 +64,6 @@ bool ArrayStack<ItemType>::expandCapacity()
 		newArray[i] = items[i];
 	delete [] items;
 	items = newArray;
-	return true;
 }
 
 template <class ItemType>
@@ -67,26 +73,22 @@ bool ArrayStack<ItemType>::push(const ItemType& newEntry)
 		expandCapacity();
 	top++;
 	items[top] = newEntry;
+	return true;
 }
 
 template <class ItemType>
 bool ArrayStack<ItemType>::pop()
 {
-	bool result = false;
-	if (!isEmpty())
-	{
-		top--;
-		result = true;
-	} // end if
-	return result;
-} // end pop
+  	if(isEmpty()) return false;
+	top--;
+	return true;
+}
 
 template <class ItemType>
 ItemType ArrayStack<ItemType>::peek() const
 {
-	assert(!isEmpty()); // Enforce precondition
-	// Stack is not empty; return top
+	assert(!isEmpty());
 	return items[top];
-} // end peek
+}
 
 #endif

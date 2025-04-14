@@ -11,12 +11,13 @@
 
 #include <stdexcept>
 #include <string>
+
 using namespace std;
 
 class MemoryAllocException final : public logic_error
 {
 	public:
-		MemoryAllocException(const string& msg = "");
+		explicit MemoryAllocException(const string& msg = "");
 };
 
 #endif //MEMORYALLOCEXCEPTION_H

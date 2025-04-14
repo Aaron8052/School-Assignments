@@ -1,7 +1,8 @@
 #include <iostream>
-#include "MemoryAllocException.h"
+#include "ArrayStack.h"
+
 int main()
 {
-	throw MemoryAllocException("Test");
+	ArrayStack<int> stack;
 	return 0;
 }
