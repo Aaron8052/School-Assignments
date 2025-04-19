@@ -13,17 +13,26 @@
 
 using namespace std;
 
-void popStackAll(ArrayStack<int>& stack)
+bool popStackAll(ArrayStack<int>& stack)
 {
 	cout << "---- Stack ----" << endl;
 	while (!stack.isEmpty())
 	{
-		cout << stack.peek() << " ";
+		try
+		{
+			cout << stack.peek() << " ";
+		}
+		catch (std::exception& ex)
+		{
+			cerr << ex.what() << endl;
+			return false;
+		}
 		stack.pop();
 	}
 	cout << endl
 		<< "---- End Stack ----"
 		<< endl;
+	return true;
 }
 
 bool testPush(ArrayStack<int>& stack)
@@ -38,7 +47,6 @@ bool testPush(ArrayStack<int>& stack)
 		stack.push(-99);
 		stack.push(-50);
 		stack.push(100);
-		popStackAll(stack);
 		return true;
 	}
 	catch (std::exception& ex)
@@ -52,5 +60,6 @@ int main()
 {
 	ArrayStack<int> stack;
 	assert(testPush(stack));
+	assert(popStackAll(stack));
 	return 0;
 }
