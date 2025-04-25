@@ -55,9 +55,9 @@ void testRemove(LinkedList<int> &list)
 
 void replace(LinkedList<int> &list, int position, int newEntry)
 {
-	list.replace(position, newEntry);
 	std::cout << "Replace position " << position << ": " << list.getEntry(position)
 		<< " to: " << newEntry << std::endl;
+	list.replace(position, newEntry);
 }
 
 void testReplace(LinkedList<int> &list)

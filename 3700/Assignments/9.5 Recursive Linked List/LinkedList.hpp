@@ -176,7 +176,6 @@ template <class ItemType>
 Node<ItemType>* LinkedList<ItemType>
 ::getNodeAtRecur(Node<ItemType>* currNode, int position) const
 {
-	if (position < 1 || !currNode) return nullptr;
 	if (position == 1) return currNode;
 	return getNodeAtRecur(currNode->getNext(), position - 1);
 }
