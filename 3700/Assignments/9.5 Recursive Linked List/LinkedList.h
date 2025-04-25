@@ -13,7 +13,7 @@
 #include "Node.h"
 #include "PrecondViolatedExcep.h"
 
-template<class ItemType>
+template <class ItemType>
 class LinkedList : public ListInterface<ItemType>
 {
 	private:
@@ -28,28 +28,30 @@ class LinkedList : public ListInterface<ItemType>
 		// @return  A pointer to the node at the given position.
 		Node<ItemType>* getNodeAt(int position) const;
 		Node<ItemType>* getNodeAtRecur(Node<ItemType>* currNode, int position) const;
-		bool removeRecur(Node<ItemType>* prevNode,
-			Node<ItemType>* currNode, int position);
+		Node<ItemType>* removeRecur(Node<ItemType>* currNode,
+									Node<ItemType>* subChainPtr, int position);
 		void clearChain(Node<ItemType>* currNode);
+		Node<ItemType>* insertChain(int position,
+									Node<ItemType>* newNode, Node<ItemType>* subChainPtr);
 
 	public:
 		LinkedList();
-		LinkedList(const LinkedList<ItemType>& aList);
+		LinkedList(const LinkedList<ItemType> &aList);
 		virtual ~LinkedList();
 
-		bool isEmpty() const;
-		int getLength() const;
-		bool insert(int newPosition, const ItemType& newEntry);
-		bool remove(int position);
-		void clear();
+		bool isEmpty() const override;
+		int getLength() const override;
+		bool insert(int newPosition, const ItemType &newEntry) override;
+		bool remove(int position) override;
+		void clear() override;
 
 		/** @throw PrecondViolatedExcep if position < 1 or
 		                                   position > getLength(). */
-		ItemType getEntry(int position) const;
+		ItemType getEntry(int position) const override;
 
 		/** @throw PrecondViolatedExcep if position < 1 or
 		                                   position > getLength(). */
-		void replace(int position, const ItemType& newEntry);
+		void replace(int position, const ItemType &newEntry) override;
 }; // end LinkedList
 
 #include "LinkedList.hpp"
