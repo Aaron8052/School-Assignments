@@ -133,7 +133,7 @@ double Algebra::
 	ArrayStack<double> operands(10);
 	// temporarily store the number for later parsing
 	std::string operandBuffer = "";
-	// foreach char in infix expression
+	// foreach char in postfixExp expression
 	for (char c : postfixExp)
 	{
 		// Each element ends with SEPARATOR,
