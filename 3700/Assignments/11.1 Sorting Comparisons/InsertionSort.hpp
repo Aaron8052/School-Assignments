@@ -21,6 +21,7 @@ int insertionSort(ItemType theArray[], int n)
 	//             unsorted region theArray[unsorted..n?1]
 	for (int unsorted = 1; unsorted < n; unsorted++)
 	{
+		comparisonsCounter++;
 		// At this point, theArray[0..unsorted?1] is sorted.
 		// Find the right position (loc) in theArray[0..unsorted]
 		// for theArray[unsorted], which is the first entry in the
@@ -29,7 +30,7 @@ int insertionSort(ItemType theArray[], int n)
 		int loc = unsorted;
 		while (loc > 0)
 		{
-			comparisonsCounter ++;
+			comparisonsCounter += 2;
 			if (theArray[loc - 1] > nextItem)
 			{
 				// Shift theArray[loc ? 1] to the right

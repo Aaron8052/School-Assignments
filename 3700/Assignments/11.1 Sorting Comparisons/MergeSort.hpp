@@ -33,7 +33,7 @@ int merge(ItemType theArray[], int first, int mid, int last)
 	int index = 0;           // Next available location in tempArray
 	while ((first1 <= last1) && (first2 <= last2))
 	{
-		comparisonsCounter ++;
+		comparisonsCounter += 3;
 		// At this point, tempArray[first..index?1] is in order
 		if (theArray[first1] <= theArray[first2])
 		{
@@ -52,6 +52,7 @@ int merge(ItemType theArray[], int first, int mid, int last)
 	// Finish off the first subarray, if necessary
 	while (first1 <= last1)
 	{
+		comparisonsCounter++;
 		// At this point, tempArray[first..index?1] is in order
 		tempArray[index] = theArray[first1];
 		first1++;
@@ -61,6 +62,7 @@ int merge(ItemType theArray[], int first, int mid, int last)
 	// Finish off the second subarray, if necessary
 	while (first2 <= last2)
 	{
+		comparisonsCounter++;
 		// At this point, tempArray[first..index?1] is in order
 		tempArray[index] = theArray[first2];
 		first2++;
@@ -69,7 +71,10 @@ int merge(ItemType theArray[], int first, int mid, int last)
 
 	// Copy the result back into the original array
 	for (index = first; index <= last; index++)
+	{
+		comparisonsCounter++;
 		theArray[index] = tempArray[index - first];
+	}
 	delete [] tempArray;
 	return comparisonsCounter;
 }  // end merge
@@ -84,6 +89,7 @@ template<class ItemType>
 int mergeSort(ItemType theArray[], int first, int last)
 {
 	int comparisonsCounter = 0;
+	comparisonsCounter++;
 	if (first < last)
 	{
 		// Sort each half
