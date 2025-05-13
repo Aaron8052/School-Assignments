@@ -22,7 +22,7 @@ class Algebra
 
 	public:
 		std::string toPostfix(const std::string& infixExp);
-		double evaluatePostfix(std::string postfixExp);
+		double evaluatePostfix(const std::string& postfixExp);
 };
 
 #endif //ALGEBRA_H

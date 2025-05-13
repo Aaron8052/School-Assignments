@@ -8,8 +8,8 @@
 
 #ifndef ARRAYSTACK
 #define ARRAYSTACK
-#include <assert.h>
 
+#include "PrecondViolationException.h"
 #include "ArrayStack.h"
 
 template <class ItemType>
@@ -73,7 +73,8 @@ bool ArrayStack<ItemType>::pop()
 template <class ItemType>
 ItemType ArrayStack<ItemType>::peek() const
 {
-	assert(!isEmpty());
+	if (isEmpty())
+		throw PrecondViolationException("Stack is empty.");
 	return items[top];
 }
 

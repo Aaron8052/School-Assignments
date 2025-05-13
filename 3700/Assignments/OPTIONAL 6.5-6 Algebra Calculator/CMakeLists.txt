@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_executable(OPTIONAL_6_5_6_Algebra_Calculator
         Algebra.cpp
-        Calculator.cpp)
+        Calculator.cpp
+        PrecondViolationException.cpp)

@@ -129,7 +129,7 @@ std::string Algebra::toPostfix(const std::string& infixExp)
 }
 
 double Algebra::
-evaluatePostfix(std::string postfixExp)
+evaluatePostfix(const std::string& postfixExp)
 {
 	ArrayStack<double> operands(10);
 	// temporarily store the number for later parsing
