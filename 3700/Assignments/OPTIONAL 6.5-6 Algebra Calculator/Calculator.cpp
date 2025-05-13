@@ -16,13 +16,16 @@ const std::string EXIT = "quit";
 
 void printIntro()
 {
-	std::cout << "Please enter an algebra expression, "
+	std::cout
+		<< "[Algebra Calculator]" << std::endl
+		<< "Please enter an algebra expression, "
 		<< "or type \"" << EXIT << "\" to exit."
 		<< std::endl << "Expression: ";
 }
 
 void printResult(const double result)
 {
+	std::cout << "Result: ";
 	if (std::isnan(result) || std::isinf(result))
 		std::cout << "Undefined";
 	else std::cout << result;
@@ -33,29 +36,23 @@ void printInvalidExpr()
 {
 	std::cout << "Invalid expression, "
 		<< "please try again!"
-		<< std::endl << std::endl;
+		<< std::endl;
 }
 
-void processInput(std::string& userInput)
+double processInput(std::string& userInput)
 {
-	std::string postfixExpr;
-	double result = 0.0;
-	// Expression Validation
 	try
 	{
 		Algebra alg;
-		postfixExpr = alg.toPostfix(userInput);
-		result = alg.evaluatePostfix(postfixExpr);
+		auto postfixExpr = alg.toPostfix(userInput);
+		auto result = alg.evaluatePostfix(postfixExpr);
+		return result;
 	}
 	catch (std::logic_error& ex)
 	{
 		printInvalidExpr();
-		return;
+		return NAN;
 	}
-	std::cout << "Postfix Expression: " << postfixExpr << std::endl;
-	// Result Validation
-	std::cout << "Result: ";
-	printResult(result);
 }
 
 int main()
@@ -69,7 +66,8 @@ int main()
 		std::cin.clear();
 		if (userInput == EXIT)
 			break;
-		processInput(userInput);
+		const auto result = processInput(userInput);
+		printResult(result);
 	}
 	return 0;
 }

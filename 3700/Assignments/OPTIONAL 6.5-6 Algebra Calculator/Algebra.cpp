@@ -7,8 +7,9 @@
 */
 
 #include "Algebra.h"
-#include <math.h>
+#include <cmath>
 #include "ArrayStack.h"
+#include "InvalidCharException.h"
 
 // Private
 
@@ -74,6 +75,9 @@ std::string Algebra::toPostfix(const std::string& infixExp)
 		}
 		else if (c == '(')
 		{
+			// Nothing in between a num and '('
+			if (!prevWasOperator && !postfixExp.empty())
+				operators.push('*');
 			operators.push(c);
 			prevWasOperator = true;
 		}
@@ -116,7 +120,14 @@ std::string Algebra::toPostfix(const std::string& infixExp)
 				operators.pop();
 			}
 			operators.pop();
-			prevWasOperator = true;
+			prevWasOperator = false;
+		}
+		else if (c != ' ')
+		{
+			// Invalid Character
+			throw
+				InvalidCharException(
+					"Expression contains invalid character.");
 		}
 	}
 	while (!operators.isEmpty())

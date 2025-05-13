@@ -1,4 +1,4 @@
-﻿/*
+/*
     Name: PrecondViolationException
     Copyright: 2025
     Author: Yu Jiang
@@ -12,8 +12,8 @@
 
 class PrecondViolationException final : public std::logic_error
 {
-    public:
-        PrecondViolationException(const std::string& msg);
+	public:
+		PrecondViolationException(const std::string& msg);
 };
 
 #endif //PRECONDVIOLATIONEXCEPTION_H
