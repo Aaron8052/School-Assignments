@@ -1,4 +1,4 @@
-﻿/*
+/*
     Name: Algebra
     Copyright: 2025
     Author: Yu Jiang
@@ -10,16 +10,19 @@
 #define ALGEBRA_H
 #include <string>
 
-class Algebra 
+class Algebra
 {
-    private:
-        const char SEPARATOR = ' ';
-        static bool isOperand(char c);
-        static bool isOperator(char c);
-        static int getPrecedenceOf(char c);
-    public:
-        std::string toPostfix(const std::string& infixExp);
-        float evaluatePostfix(std::string postfixExp);
+	private:
+		static const char NEGATIVE_SIGN = '~';
+		static const char SEPARATOR = ' ';
+		static bool isOperand(char c);
+		static bool isOperator(char c);
+		static int getPrecedenceOf(char c);
+		static double calOperands(char op, double opnd1, double opnd2);
+
+	public:
+		std::string toPostfix(const std::string& infixExp);
+		double evaluatePostfix(std::string postfixExp);
 };
 
 #endif //ALGEBRA_H
