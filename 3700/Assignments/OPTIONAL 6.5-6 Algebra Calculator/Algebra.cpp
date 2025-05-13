@@ -61,7 +61,7 @@ std::string Algebra::toPostfix(const std::string& infixExp)
 	ArrayStack<char> operators(10);
 	// Record if the previous char was an operator
 	bool prevWasOperator = true;
-	// foreach char in infix expression
+	// foreach char in infixExp
 	for (char c : infixExp)
 	{
 		if (isOperand(c))
@@ -133,7 +133,7 @@ double Algebra::
 	ArrayStack<double> operands(10);
 	// temporarily store the number for later parsing
 	std::string operandBuffer = "";
-	// foreach char in postfixExp expression
+	// foreach char in postfixExp
 	for (char c : postfixExp)
 	{
 		// Each element ends with SEPARATOR,
