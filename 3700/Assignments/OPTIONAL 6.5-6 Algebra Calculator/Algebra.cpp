@@ -7,6 +7,7 @@
 */
 
 #include "Algebra.h"
+#include <math.h>
 #include "ArrayStack.h"
 
 // Private
@@ -128,7 +129,7 @@ std::string Algebra::toPostfix(const std::string& infixExp)
 }
 
 double Algebra::
-	evaluatePostfix(std::string postfixExp)
+evaluatePostfix(std::string postfixExp)
 {
 	ArrayStack<double> operands(10);
 	// temporarily store the number for later parsing
@@ -162,5 +163,11 @@ double Algebra::
 		auto result = calOperands(c, operand1, operand2);
 		operands.push(result);
 	}
-	return operands.isEmpty() ? 0 : operands.peek();
+	if (!operandBuffer.empty())
+	{
+		// Parse the num in buffer, and push to the stack
+		operands.push(std::stod(operandBuffer));
+		operandBuffer.clear();
+	}
+	return operands.isEmpty() ? NAN : operands.peek();
 }
