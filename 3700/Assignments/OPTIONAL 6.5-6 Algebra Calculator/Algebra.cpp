@@ -56,25 +56,24 @@ std::string Algebra::toPostfix(const std::string& infixExp)
 		{
 			if (isPrevOperator)
 				postfixExp.push_back(SEPARATOR);
-			isPrevOperator = false;
 			postfixExp.push_back(c);
+			isPrevOperator = false;
 		}
 		else if (c == '(')
 		{
-			isPrevOperator = true;
 			operators.push(c);
+			isPrevOperator = true;
 		}
 		else if (isOperator(c))
 		{
 			// Negative sign
 			if (c == '-' && isPrevOperator)
 			{
-				isPrevOperator = false;
 				postfixExp.push_back(SEPARATOR);
 				postfixExp.push_back(c);
+				isPrevOperator = false;
 				continue;
 			}
-			isPrevOperator = true;
 			while (!operators.isEmpty()
 				&& operators.peek() != '('
 				&& getPrecedenceOf(c) <= getPrecedenceOf(operators.peek()))
@@ -84,10 +83,10 @@ std::string Algebra::toPostfix(const std::string& infixExp)
 				operators.pop();
 			}
 			operators.push(c);
+			isPrevOperator = true;
 		}
 		else if (c == ')')
 		{
-			isPrevOperator = true;
 			while (operators.peek() != '(')
 			{
 				postfixExp.push_back(SEPARATOR);
@@ -95,6 +94,7 @@ std::string Algebra::toPostfix(const std::string& infixExp)
 				operators.pop();
 			}
 			operators.pop();
+			isPrevOperator = true;
 		}
 	}
 	while (!operators.isEmpty())

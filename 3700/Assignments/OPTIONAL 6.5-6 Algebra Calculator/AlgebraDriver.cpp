@@ -20,9 +20,9 @@ void testConversion(std::string expr)
 
 int main()
 {
-    testConversion("-15.1 + 16 * 8");
-    testConversion("15.1 + 16 * 8");
+    testConversion("-15.1 + 16 * -8");
+    testConversion("15.1 + 16 * -8");
     testConversion("(15 + 16) * -8");
-    testConversion("2 * (3 + 4)");
+    testConversion("2 * (-3 + 4)");
     return 0;
 }
