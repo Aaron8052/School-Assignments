@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Name: CircularLinkedQueue
 	Copyright: 2025
 	Author: Yu Jiang
