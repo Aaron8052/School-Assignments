@@ -13,18 +13,18 @@
 template <class T>
 class Node
 {
-    private:
-        T item;
-        std::shared_ptr<Node<T>> next;
+	private:
+		T item;
+		std::shared_ptr<Node<T>> next;
 
-    public:
-        Node();
-        Node(const T& anItem);
-        Node(const T& anItem, std::shared_ptr<Node<T>> nextNodePtr);
-        void setItem(const T& anItem);
-        void setNext(std::shared_ptr<Node<T>> nextNodePtr);
-        T getItem() const;
-        std::shared_ptr<Node<T>> getNext() const;
+	public:
+		Node();
+		Node(const T& anItem);
+		Node(const T& anItem, std::shared_ptr<Node<T>> nextNodePtr);
+		void setItem(const T& anItem);
+		void setNext(std::shared_ptr<Node<T>> nextNodePtr);
+		T getItem() const;
+		std::shared_ptr<Node<T>> getNext() const;
 };
 
 #include "Node.hpp"

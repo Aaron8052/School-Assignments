@@ -7,6 +7,7 @@
 		for the CircularLinkedQueue class.
 */
 
+#include <cassert>
 #include <iostream>
 #include "QueueInterface.h"
 #include "CircularLinkedQueue.h"
@@ -27,7 +28,7 @@ void dequeueAll(QueueInterface<int>& queue)
 	{
 		std::cout << queue.peekFront()
 			<< " ";
-		queue.dequeue();
+		assert(queue.dequeue());
 	}
 	std::cout << std::endl
 		<< std::endl;
@@ -38,7 +39,7 @@ int main()
 	CircularLinkedQueue<int> queue;
 	dequeueAll(queue);
 	for (int i = -10; i < 10; i++)
-		queue.enqueue(i);
+		assert(queue.enqueue(i));
 	dequeueAll(queue);
 	dequeueAll(queue);
 	return 0;

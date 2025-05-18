@@ -17,15 +17,16 @@
 template <class T>
 class CircularLinkedQueue final : public QueueInterface<T>
 {
-    private:
-        std::shared_ptr<Node<T>> tailPtr;
-    public:
-        bool isEmpty() const override;
-        bool enqueue(const T& newEntry) override;
-        bool dequeue() override;
-        T peekFront() const override;
-        CircularLinkedQueue();
-        ~CircularLinkedQueue() override;
+	private:
+		std::shared_ptr<Node<T>> tailPtr;
+
+	public:
+		bool isEmpty() const override;
+		bool enqueue(const T& newEntry) override;
+		bool dequeue() override;
+		T peekFront() const override;
+		CircularLinkedQueue();
+		~CircularLinkedQueue() override;
 };
 
 #include "CircularLinkedQueue.hpp"
