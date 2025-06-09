@@ -27,7 +27,7 @@ class BinaryTreeInterface
 
 		/** Gets the data that is in the root of this binary tree.
 		 @pre  The binary tree is not empty.
-		 @post  The root’s data has been returned, and the tree is unchanged.
+		 @post  The root?s data has been returned, and the tree is unchanged.
 		 @return  The data in the root of the binary tree. */
 		virtual ItemType getRootData() const = 0;
 
